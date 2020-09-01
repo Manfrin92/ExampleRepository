@@ -33,6 +33,7 @@ const App: React.FC = () => {
           latitude: Number(`-25.${response.data[0].id}`),
           longitude: Number(`-49.${response.data[0].id}`),
         });
+        setLoading(false);
       } catch (err) {
         console.log(err);
       }
@@ -42,12 +43,6 @@ const App: React.FC = () => {
       fetchApi();
     }
   }, []);
-
-  useEffect(() => {
-    if (coordinates) {
-      setLoading(false);
-    }
-  }, [coordinates]);
 
   return (
     <>
