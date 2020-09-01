@@ -11,7 +11,10 @@ interface Coordinates {
 }
 
 const App: React.FC = () => {
-  const [coordinates, setCoordinates] = useState({} as Coordinates);
+  const [coordinates, setCoordinates] = useState({
+    latitude: 37.78825,
+    longitude: -122.4324,
+  });
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -35,8 +38,10 @@ const App: React.FC = () => {
       }
     }
 
-    fetchApi();
-  }, [coordinates]);
+    if (loading) {
+      fetchApi();
+    }
+  }, []);
 
   useEffect(() => {
     if (coordinates) {
